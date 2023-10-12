@@ -34,3 +34,21 @@ print Greeter.instance_methods(false)  # 仅输出 [:say_hi, :say_bye]
 
 puts "\n\n"
 
+
+
+# 改变 Greeter 类，对外暴露出 name 属性   （可见，定义好了一个类之后，在其他地方仍然可以改变这个类的定义）
+class Greeter
+  attr_accessor :name
+end
+
+
+print Greeter.instance_methods(false) # 输出 [:name=, :name, :say_hi, :say_bye] ，可以看到，多了两个方法 name= 和 name
+puts "\n\n"
+
+# 现在可以直接访问 name 属性了
+puts pat.name # 输出 Pat
+
+pat.name="Betty"
+print pat.name  # 输出 Betty . 可以看到，即使之前创建的对象，也随着类的改变而改变了
+
+
